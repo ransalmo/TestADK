@@ -58,7 +58,7 @@ classDiagram
         +search(author: str, location: str) List[AgentMetadata]
     }
 
-    class "FastAPI Endpoints" as Endpoints {
+    class FastAPIEndpoints {
         +/chat (POST)
         +/health (GET)
     }
@@ -66,7 +66,7 @@ classDiagram
     Orchestator --|> Agent
     Orchestator o-- "OpenAICompatibleModel"
     Orchestator o-- "SequentialAgent"
-    Endpoints ..> ChatRequest : uses
+    FastAPIEndpoints ..> ChatRequest : uses
     AgentRepository ..> AgentMetadata : returns
 ```
 
