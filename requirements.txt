@@ -107,3 +107,9 @@ uvicorn==0.41.0
 watchdog==6.0.0
 websockets==15.0.1
 zipp==3.23.0
+# Google Cloud & Vertex AI
+google-cloud-aiplatform[reasoning_engine,toolchains]
+google-auth
+google-auth-oauthlib
+cloudpickle
+python-dotenv
