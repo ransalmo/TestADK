@@ -13,8 +13,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the application's code from the host to the container at /app
 COPY . .
 
+# Add the src directory to the PYTHONPATH
+ENV PYTHONPATH "${PYTHONPATH}:/app"
+
 # Make port 8000 available to the world outside this container
 EXPOSE 8000
 
 # Run main.py when the container launches
-CMD ["uvicorn", "src.agent.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "src.agent_rest_api.main:app", "--host", "0.0.0.0", "--port", "8000"]

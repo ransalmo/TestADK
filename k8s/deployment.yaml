@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: agent-rest-api
+  labels:
+    app: agent-rest-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: agent-rest-api
+  template:
+    metadata:
+      labels:
+        app: agent-rest-api
+    spec:
+      containers:
+      - name: agent-rest-api
+        image: agent-rest-api
+        ports:
+        - containerPort: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: agent-rest-api
+spec:
+  selector:
+    app: agent-rest-api
+  ports:
+  - port: 80
+    targetPort: 8000
+  type: LoadBalancer
