@@ -1,3 +1,5 @@
+from typing import Optional
+
 from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
@@ -13,4 +15,6 @@ class Settings(BaseSettings):
     db_name: str = ""
     project_id: str = ""
     location: str = ""
+    agent_metadata_bucket: Optional[str] = None
+    use_vertex_ai_agents: bool = False
 

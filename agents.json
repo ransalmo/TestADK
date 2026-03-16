@@ -1,0 +1,23 @@
+[
+  {
+    "agent": "SQLAgent",
+    "location": "local",
+    "key_path": "",
+    "description": "An agent that can answer questions about structured data in a SQL database.",
+    "author": "Randy Salas"
+  },
+  {
+    "agent": "SearchAgent",
+    "location": "remote",
+    "key_path": "projects/your-gcp-project/locations/us-central1/reasoningEngines/your-search-agent-id",
+    "description": "An agent that can search a knowledge base for information.",
+    "author": "Randy Salas"
+  },
+  {
+    "agent": "SummaryAgent",
+    "location": "local",
+    "key_path": "",
+    "description": "An agent that can summarize long texts.",
+    "author": "GitHub Copilot"
+  }
+]

@@ -1,32 +1,33 @@
-from google.adk.models.lite_llm import LiteLlm
+from google.adk.models import Gemini
 from google.adk.agents import Agent
 import logging
+from src.agent_rest_api.agent.iorchestator import IOrchestrator
 
 logger = logging.getLogger(__name__)
 
 
-class Orchestrator:
-    def __init__(self, model_name: str, key: str, model_url: str, agents: list[Agent]):
-        logger.info("Initializing Orchestrator")
+class GeminiOrchestrator(IOrchestrator):
+    def __init__(self, model_name: str, project_id: str, location: str, agents: list[Agent]):
+        logger.info("Initializing GeminiOrchestrator")
 
         self.model_name = model_name
-        self.key = key
-        self.model_url = model_url
+        self.project_id = project_id
+        self.location = location
         self.agents = agents
 
         self.__init_llm()
         self.__init_router()
 
-        logger.info("Orchestrator initialized")
+        logger.info("GeminiOrchestrator initialized")
 
     def __init_llm(self):
 
         logger.info("Initializing LLM")
 
-        self.llm = LiteLlm(
-            model=f"openai/{self.model_name}",
-            api_key=self.key,
-            api_base=self.model_url
+        self.llm = Gemini(
+            model=self.model_name,
+            project=self.project_id,
+            location=self.location,
         )
 
     def __init_router(self):
